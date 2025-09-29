@@ -12,17 +12,17 @@ It is not designed for real-time streaming data.
 - Add namespace
 ```xml
 <ContentPage ...
-	     xmlns:controls="clr-namespace:Maui.FinancialCharts.Controls;assembly=Maui.FinancialCharts"
-	     ...>
+	     	 xmlns:controls="clr-namespace:Maui.FinancialCharts.Controls;assembly=Maui.FinancialCharts"
+	     	 ...>
 ```
 - Create control
 ```xml
 <controls:ClusterChart x:Name="clusterChart"
-		       DataSource="{Binding TickDataProvider}"
-		       TickSize="0.5"
-		       TimeFrame="Daily"
-		       VerticalHistogram="True"
-		       HorizontalHistogram="True"/>
+					   DataSource="{Binding TickDataProvider}"
+		       		   TickSize="0.5"
+		       		   TimeFrame="Daily"
+		       		   VerticalHistogram="True"
+		       		   HorizontalHistogram="True"/>
 ```
 
 ## 📋 Bindable Properties
