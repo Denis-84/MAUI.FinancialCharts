@@ -2,6 +2,10 @@
 
 MAUI control for visualizing market tick data as volume clusters.
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![.NET](https://img.shields.io/badge/.NET-8.0-purple.svg)](https://dotnet.microsoft.com/)
+[![Platform](https://img.shields.io/badge/MAUI-Cross--Platform-blue.svg)](https://dotnet.microsoft.com/apps/maui)
+
 ## ⚠️ Note
 
 This control is specifically optimized for static, historical data visualization. 
@@ -113,9 +117,9 @@ in the `FakeTickDataProvider` class.
 - Colors and gradients display incorrectly
 - Background overlaps chart elements
 - Transparency effects don't work properly
-- 
+
 ## 📅 Roadmap
 
-- Implement rendering using SkiaSharp for better cross-platform consistency
-- Improve Android support
-- Add iOS and macOS testing
+- [ ] Implement rendering using SkiaSharp for better cross-platform consistency
+- [ ] Improve Android support
+- [ ] Add iOS and macOS testing
