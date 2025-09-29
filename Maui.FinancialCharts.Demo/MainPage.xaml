@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:controls="clr-namespace:Maui.FinancialCharts.Controls;assembly=Maui.FinancialCharts"
+			 xmlns:vm="clr-namespace:Maui.FinancialCharts.Demo.ViewModels"
+			 Shell.NavBarIsVisible="False"
+			 x:DataType="vm:MarketViewModel"
+			 BindingContext="{vm:MarketViewModel}"
+             x:Class="Maui.FinancialCharts.Demo.MainPage">
+
+	<ContentPage.Resources>
+		<Style TargetType="Switch" x:Key="switchStyle">
+			<Setter Property="OnColor" Value="#4dccff"/>
+			<Setter Property="ThumbColor" Value="#fffa66"/>
+		</Style>
+
+		<Style TargetType="Label">
+			<Setter Property="VerticalOptions" Value="Center"/>
+			<Setter Property="TextColor" Value="#99e5ff"/>
+			<Setter Property="Margin" Value="10, 0, 8, 0"/>
+			<Setter Property="FontSize" Value="18"/>
+		</Style>
+
+		<Style TargetType="Picker">
+			<Setter Property="BackgroundColor" Value="#7000001a"/>
+			<Setter Property="TextColor" Value="#fffa66"/>
+			<Setter Property="FontAttributes" Value="Bold"/>
+			<Setter Property="FontSize" Value="16"/>
+		</Style>
+
+		<Style TargetType="Border">
+			<Setter Property="Stroke" Value="#4dccff"/>
+			<Setter Property="BackgroundColor" Value="#e01a0033"/>
+			<Setter Property="Padding" Value="2"/>
+			<Setter Property="VerticalOptions" Value="Start"/>
+			<Setter Property="StrokeShape">
+				<Setter.Value>
+					<RoundRectangle CornerRadius="4"/>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Style TargetType="Button">
+			<Setter Property="BackgroundColor" Value="#4dccff"/>
+			<Setter Property="TextColor" Value="#1a0033"/>
+			<Setter Property="FontAttributes" Value="Bold"/>
+			<Setter Property="FontSize" Value="16"/>
+		</Style>
+	</ContentPage.Resources>
+
+	<Grid RowDefinitions="*">
+		<HorizontalStackLayout Grid.Row="0" ZIndex="1" 
+							   VerticalOptions="Start"
+							   HorizontalOptions="Center"
+							   Spacing="4">
+			<Border>
+				<HorizontalStackLayout>
+					<Label Text="Tick size"/>
+					<Picker x:Name="tickSize"/>
+
+					<Label Text="Time frame"/>
+					<Picker x:Name="timeFrame"/>
+
+					<Button Text="Reload"
+								Clicked="OnReloaded"/>
+				</HorizontalStackLayout>
+			</Border>
+
+			<Border>
+				<VerticalStackLayout WidthRequest="160">
+					<Button Text="Show Volumes"
+							Clicked="OnVolumeVisibleToggled"
+							TextColor="#fffa66"
+							BackgroundColor="Transparent"/>
+
+					<Grid x:Name="volume" 
+						  ColumnDefinitions="2*, *"
+						  RowDefinitions="Auto, Auto"
+						  IsVisible="False">
+
+						<Label Grid.Column="0" Grid.Row="0"
+							   HorizontalOptions="Start"
+							   Text="Vertical"/>
+						<Switch Grid.Column="1" Grid.Row="0"
+								Style="{StaticResource switchStyle}"
+								IsToggled="{Binding VerticalHistogram, Source={Reference clusterChart}, x:DataType=controls:ClusterChart}"/>
+
+						<Label Grid.Column="0" Grid.Row="1" 
+							   HorizontalOptions="Start"
+							   Text="Horizontal"/>
+						<Switch Grid.Column="1" Grid.Row="1" 
+								Style="{StaticResource switchStyle}"
+								IsToggled="{Binding HorizontalHistogram, Source={Reference clusterChart}, x:DataType=controls:ClusterChart}"/>
+					</Grid>
+				</VerticalStackLayout>
+			</Border>
+
+			<Border>
+				<HorizontalStackLayout Spacing="2">
+					<Label Text="Reset"/>
+
+					<Button Text="Scale"
+							Clicked="OnScaleReset"/>
+					<Button Text="Offset"
+							Clicked="OnOffsetReset"/>
+					<Button Text="Both"
+							Clicked="OnTransformReset"/>
+				</HorizontalStackLayout>
+			</Border>
+		</HorizontalStackLayout>
+
+		<controls:ClusterChart Grid.Row="0" 
+							   x:Name="clusterChart" 
+							   DataSource="{Binding TickDataProvider}"/>
+	</Grid>
+
+</ContentPage>
