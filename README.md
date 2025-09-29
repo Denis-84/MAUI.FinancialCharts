@@ -95,8 +95,8 @@ in the `FakeTickDataProvider` class.
 - **Line placement:** Press and release left mouse button on time/price area, move mouse along the area, then click again to place the line.
 - **Line repositioning:** Press and release left mouse button on an existing line and move mouse to new position, or move mouse out of area to delete line.
 ### 📷 Screenshots
-![Demo](cluster_chart_screenshot_1.png)
-![Demo](cluster_chart_screenshot_2.png)
+![Demo](Art/cluster_chart_screenshot_1.png)
+![Demo](Art/cluster_chart_screenshot_2.png)
 
 ## 🌍 PLatform Support
 
